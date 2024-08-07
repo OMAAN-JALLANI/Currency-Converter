@@ -33,4 +33,5 @@ Example Usage
 3. Select the desired currency: EUR
 4. Click "Convert"
 5. The converted amount will be displayed: 88.42 EUR
+ thanks
    
