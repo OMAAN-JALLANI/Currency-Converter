@@ -1,0 +1,12 @@
+Deploy Instructions
+
+Aapke currency converter ko deploy karne ke liye, yeh steps follow karein:
+
+1. Vercel par account banaein aur log in karein
+2. New Project par click karein aur Import Git Repository select karein
+3. Aapke GitHub repository URL daalein aur Import par click karein
+4. Environment Variables mein aapke API key aur other sensitive information daalein
+5. Deploy par click karein aur deployment complete hone ka wait karein
+6. Aapke currency converter ko (link unavailable) par access kar sakte hain
+
+Note: Yeh instructions Vercel ke liye hain, lekin aap other deployment platforms like Netlify, Heroku, ya AWS ka bhi istemal kar sakte hain.
