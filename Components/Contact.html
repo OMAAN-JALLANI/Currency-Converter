@@ -1,0 +1,234 @@
+
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+<link rel="stylesheet" href="/Components/converter.css">
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #000;
+  color: white;
+  position: relative;
+}
+.container {
+  position: relative;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 40px;
+  width: 700px;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+  z-index: 0;
+}
+
+.container h3 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #ff9800;
+}
+
+.inputer,
+.city {
+  margin-bottom: 15px;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.city {
+  display: flex;
+  gap: 10px;
+}
+
+.inputer-description {
+  height: 60px;
+}
+
+.error {
+  font-size: 13px;
+  color: #ff4f4f;
+  margin-bottom: 10px;
+}
+
+.success {
+  font-size: 14px;
+  color: #4eff9f;
+  margin-top: 10px;
+}
+
+button.new {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #ff9800, #000);
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button.new:hover {
+  transform: scale(1.05);
+}
+
+.contact-icon {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  object-fit: contain;
+  filter: drop-shadow(0px 0px 1px #ff9800);
+  animation: float 3s infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-9px); }
+  100% { transform: translateY(0px); }
+}
+
+.mobile-icon { top: 30px; left: 90px; }
+.mail-icon { bottom: 40px; right: 40px; animation: float1 3s infinite; }
+
+@keyframes float1 {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+  100% { transform: translateY(0px); }
+}
+ 
+@media (max-width: 768px) {
+  .container {
+    width: 95%;
+    max-width: 400px;   
+    padding: 20px;
+    margin: 20px auto;
+  }
+
+  .container h3 {
+    font-size: 18px;    
+  }
+
+  input {
+    font-size: 16px;    
+    padding: 14px;     
+  }
+
+  .city {
+    flex-direction: column;  
+    gap: 12px;
+  }
+
+  .inputer-description {
+    height: 100px;   
+  }
+
+  button.new {
+    font-size: 18px;
+    padding: 14px;
+  }
+ 
+  .contact-icon {
+    width: 90px;
+    height: 90px;
+  }
+
+  .mobile-icon {
+    top: 10px;
+    left: 10px;
+  }
+
+  .mail-icon {
+    bottom: 10px;
+    right: 10px;
+  }
+}
+
+
+</style>
+ 
+<nav class="navbar">
+  <div class="nav-logo">
+    <img class="log" src="/Components/currencyX.jpg" alt="currencyX">
+  </div>
+  <ul class="nav-links">
+    <li><a href="/Index.html" class="nav-btn">Home</a></li>
+    <li><a href="/Components/Country.html" class="nav-btn">Countries</a></li>
+    <li><a href="/Components/Blog.html" class="nav-btn">Blog</a></li>
+    <li><a href="/Components/Contact.html" class="nav-btn">Contact</a></li>
+  </ul>
+</nav>
+ 
+<img src="/Components/head.png" alt="Mobile Icon" class="contact-icon mobile-icon">
+<img src="/Components/reel.png" alt="Mail Icon" class="contact-icon mail-icon">
+ 
+<div class="container">
+  <h3 data-aos="fade">Contact Me</h3>
+
+  <form id="contactForm">
+    <div class="inputer" data-aos="fade-up">
+      <input type="text" name="from_name" placeholder="Enter Your Name" required>
+    </div>
+
+    <div class="city" data-aos="fade">
+      <input type="text" name="city" placeholder="City">
+      <input type="number" name="age" placeholder="Contact Number (Optional)">
+    </div>
+
+    <div class="inputer" data-aos="fade-down">
+      <input type="text" name="message" class="inputer-description" placeholder="Type Message" required>
+    </div>
+
+    <p id="error" class="error" data-aos="fade-right"></p>
+    <button class="new" type="submit" data-aos="zoom-in">Submit</button>
+    <p id="success" class="success" data-aos="fade"></p>
+  </form>
+</div>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+<script>
+  AOS.init({ duration: 1000 });
+
+  (function() {
+    emailjs.init("xzBpQi5U68rp562Lu"); 
+  })();
+
+  document.getElementById("contactForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const errorField = document.getElementById("error");
+    const successField = document.getElementById("success");
+
+    emailjs.sendForm("service_kkw0omk", "template_t4n5g19", this)
+      .then(() => {
+        successField.innerText = "✅ Email sent successfully!";
+        errorField.innerText = "";
+        this.reset();
+      })
+      .catch((err) => {
+        errorField.innerText = "❌ Failed to send email. Please try again.";
+        successField.innerText = "";
+        console.error("Error:", err);
+      });
+  });
+</script>

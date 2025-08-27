@@ -1,0 +1,119 @@
+<link rel="stylesheet" href="/Components/converter.css">
+<style>
+     body{
+        
+  font-family: "Poppins", sans-serif;
+        background-color: black;
+        color:  rgba(255, 153, 0, 0.553)
+     }
+ .about-section, 
+.countries-section {
+  background: rgba(255, 255, 255, 0.05);
+  margin: 100px auto;      
+  border-radius: 12px;
+  max-width: 800px;
+  width: 100%;
+  padding: 20px;           
+}
+
+.about-section h2, .countries-section h2 {
+    display: flex;
+    justify-content: center;
+    color: #ff9800;
+}
+
+#countryList {
+    list-style: none;
+    padding-left: 0;
+}
+strong{
+    color: white;
+}
+#countryList li {
+    background: #3333333e;
+    padding: 8px;
+    margin: 5px 0;
+    border-radius: 20px;
+    color: #fff;
+}
+
+/* Scroll for long country list */
+.countries-section ul {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.mobile-icon {
+  bottom: 40px;
+    position: absolute;
+  width: 300px;
+  height: 300px;
+  z-index: -1;
+}
+@media (max-width: 768px) {
+  .about-section, 
+  .countries-section {
+    margin: 40px 15px;    
+    max-width: 100%;      
+  }
+}
+</style>
+ <nav class="navbar">
+  <div class="nav-logo">
+    <img class="log" src="/Components/currencyX.jpg" alt="currencyX">
+  </div>
+
+  <ul class="nav-links">
+    <li><a href="/Index.html"class="nav-btn"  id="aboutBtn">Home</a></li>
+    <li><a href="/Components/Country.html" class="nav-btn" id="countriesBtn">Countries</a></li>
+    <li><a href="/Components/Blog.html" class="nav-btn" id="blogBtn">Blog</a></li>
+    <li><a href="/Components/Contact.html"class="nav-btn"  id="contactBtn">Contact</a></li>
+  </ul>
+</nav>
+<section class="countries-section" >
+        <h2>Available Countries</h2>
+        <p>Total Countries Supported: <strong id="totalCountries"></strong><strong>+</strong></p>
+        <ul id="countryList"></ul>
+    </section>
+<script>
+    const countryList = {
+        AED: "AE", AFN: "AF", XCD: "AG", ALL: "AL", AMD: "AM", ANG: "AN", AOA: "AO",
+        AQD: "AQ", ARS: "AR", AUD: "AU", AZN: "AZ", BAM: "BA", BBD: "BB", BDT: "BD",
+        XOF: "BE", BGN: "BG", BHD: "BH", BIF: "BI", BMD: "BM", BND: "BN", BOB: "BO",
+        BRL: "BR", BSD: "BS", NOK: "BV", BWP: "BW", BYR: "BY", BZD: "BZ", CAD: "CA",
+        CDF: "CD", XAF: "CF", CHF: "CH", CLP: "CL", CNY: "CN", COP: "CO", CRC: "CR",
+        CUP: "CU", CVE: "CV", CYP: "CY", CZK: "CZ", DJF: "DJ", DKK: "DK", DOP: "DO",
+        DZD: "DZ", ECS: "EC", EEK: "EE", EGP: "EG", ETB: "ET", EUR: "FR", FJD: "FJ",
+        FKP: "FK", GBP: "GB", GEL: "GE", GGP: "GG", GHS: "GH", GIP: "GI", GMD: "GM",
+        GNF: "GN", GTQ: "GT", GYD: "GY", HKD: "HK", HNL: "HN", HRK: "HR", HTG: "HT",
+        HUF: "HU", IDR: "ID", ILS: "IL", INR: "IN", IQD: "IQ", IRR: "IR", ISK: "IS",
+        JMD: "JM", JOD: "JO", JPY: "JP", KES: "KE", KGS: "KG", KHR: "KH", KMF: "KM",
+        KPW: "KP", KRW: "KR", KWD: "KW", KYD: "KY", KZT: "KZ", LAK: "LA", LBP: "LB",
+        LKR: "LK", LRD: "LR", LSL: "LS", LTL: "LT", LVL: "LV", LYD: "LY", MAD: "MA",
+        MDL: "MD", MGA: "MG", MKD: "MK", MMK: "MM", MNT: "MN", MOP: "MO", MRO: "MR",
+        MTL: "MT", MUR: "MU", MVR: "MV", MWK: "MW", MXN: "MX", MYR: "MY", MZN: "MZ",
+        NAD: "NA", XPF: "NC", NGN: "NG", NIO: "NI", NPR: "NP", NZD: "NZ", OMR: "OM",
+        PAB: "PA", PEN: "PE", PGK: "PG", PHP: "PH", PKR: "PK", PLN: "PL", PYG: "PY",
+        QAR: "QA", RON: "RO", RSD: "RS", RUB: "RU", RWF: "RW", SAR: "SA", SBD: "SB",
+        SCR: "SC", SDG: "SD", SEK: "SE", SGD: "SG", SKK: "SK", SLL: "SL", SOS: "SO",
+        SRD: "SR", STD: "ST", SVC: "SV", SYP: "SY", SZL: "SZ", THB: "TH", TJS: "TJ",
+        TMT: "TM", TND: "TN", TOP: "TO", TRY: "TR", TTD: "TT", TWD: "TW", TZS: "TZ",
+        UAH: "UA", UGX: "UG", USD: "US", UYU: "UY", UZS: "UZ", VEF: "VE", VND: "VN",
+        VUV: "VU", YER: "YE", ZAR: "ZA", ZMK: "ZM", ZWD: "ZW",
+    };
+
+    const ul = document.getElementById("countryList");
+    const total = document.getElementById("totalCountries");
+
+    // Loop through countries and display
+    for (const [code, country] of Object.entries(countryList)) {
+        const li = document.createElement("li");
+        li.textContent = `${code} - ${country}`;
+        ul.appendChild(li);
+    }
+
+    // Total countries count
+    total.textContent = Object.keys(countryList).length;
+</script>
+
+

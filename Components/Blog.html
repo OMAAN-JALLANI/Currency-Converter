@@ -1,0 +1,242 @@
+<link rel="stylesheet" href="/Components/converter.css">
+<style>
+    .name{
+        font-size: 150px;
+
+    }
+    .content{
+        margin-top: 70px;
+    }
+    .mobile{
+    height: 400px;
+    width: 100%;
+}
+@media (max-width : 768px) {
+    .mobile{
+        height: 250px;
+    }
+}
+.mobile img{
+ height: 600px;
+    width: 100%;  
+    position: relative;
+  animation: float1 3s infinite; 
+}
+@keyframes float1 {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+/*88888888888888888888888888888888888888888888888888888888888*/
+ 
+:root{
+  --card-bg: rgba(34, 34, 35, 0.466);
+  --text: #fff;
+  --accent1: #ff9800;
+  --accent2: #000000;
+}
+
+*{ box-sizing:border-box; margin:0; padding:0; }
+
+body{
+  background:#000;
+  color:var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+}
+ 
+.projects-wrap{
+  max-width: 1100px;
+  margin: 40px auto 80px;
+  padding: 0 16px;
+}
+ 
+.projects-title{
+  font-size: 32px;
+  letter-spacing:.5px;
+  margin: 10px 0 20px;
+  text-align: left;
+}
+ 
+.cards-row{
+  display:flex;
+  justify-content: space-evenly;
+  gap: 28px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.cards-row.second{
+  margin-top: 70px;  
+}
+ 
+.card{
+  width: 20rem;             
+  min-width: 280px;
+  height: 350px;
+  background: var(--card-bg);
+  color: var(--text);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 24px rgba(0,0,0,.45);
+  display: flex;
+  flex-direction: column;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.card:hover{
+  transform: translateY(-6px);
+  box-shadow: 0 8px 40px  #ff9800;
+}
+ 
+.card-img{
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+}
+ 
+.card-body{
+  padding: 14px 16px;
+  display:flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.card-title{
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.card-text{
+  font-size: 14px;
+  line-height: 1.45;
+  opacity: .9;
+}
+ 
+.btn-grad{
+  margin-top: auto;
+  display:inline-block;
+  text-decoration:none;
+  color:#fff;
+  padding: 10px 18px;
+  border-radius: 30px;
+  background: linear-gradient(25deg, var(--accent1), var(--accent2));
+  border:none;
+  
+  transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+}
+
+.btn-grad:hover{
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 0 28px rgba(0, 0, 0, 0.9), 0 0 60px  #ff9800;
+  filter: brightness(1.05);
+}
+ 
+@media (max-width: 768px){
+  .projects-title{ text-align:center; }
+  .cards-row{ justify-content:center; }
+  
+}
+
+</style>
+ <nav class="navbar">
+  <div class="nav-logo">
+    <img class="log" src="/Components/currencyX.jpg" alt="currencyX">
+  </div>
+
+  <ul class="nav-links">
+    <li><a href="/Index.html"class="nav-btn"  id="aboutBtn">Home</a></li>
+    <li><a href="/Components/Country.html" class="nav-btn" id="countriesBtn">Countries</a></li>
+    <li><a href="/Components/Blog.html" class="nav-btn" id="blogBtn">Blog</a></li>
+    <li><a href="/Components/Contact.html"class="nav-btn"  id="contactBtn">Contact</a></li>
+  </ul>
+</nav>
+<div class="box">
+        <div class="cont">
+<div class="section-left" data-aos="fade-right">
+  <span class="name hover-text">Blog</span>
+  
+  <div
+    class="content hover-text"
+    data-aos="fade-up"
+    data-aos-duration="1000"
+  >
+   Convert popular currencies instantly with our smart converter. CurrencyX gives you real-time exchange rates, secure transactions, and a seamless experience. Whether you’re traveling, trading, or sending money abroad — manage it all in one app.
+  </div>
+</div>
+
+        </div>
+        <div class="mobile">
+            <img data-aos="fade-right" src="/Components/donat.png" alt="mobile">
+        </div>
+    </div>
+
+  <section class="projects-wrap">
+    <h3 class="projects-title" data-aos="fade">Projects</h3>
+
+    <div class="cards-row"> 
+      <article class="card" data-aos="fade-up">
+        <img src="/Components/head.png" alt="Portfolio Website" class="card-img">
+        <div class="card-body">
+          <h5 class="card-title" data-aos="fade-right">Portfolio Website</h5>
+          <p class="card-text">
+            Responsive HTML/CSS layout for Portfolio (HTML5, CSS3).
+            My first portfolio website.
+          </p>
+          <a href="https://github.com/OMAAN-JALLANI?tab=repositories" class="btn-grad" data-aos="fade-left">
+            To GitHub
+          </a>
+        </div>
+      </article>
+      <article class="card" data-aos="fade-up">
+        <img src="/Components/monkey.png" alt="News Monkey" class="card-img">
+        <div class="card-body">
+          <h5 class="card-title" data-aos="fade-right">News Monkey</h5>
+          <p class="card-text">
+            Responsive HTML/CSS + JavaScript layout for News Monkey.
+            My first React-based website.
+          </p>
+          <a href="https://github.com/OMAAN-JALLANI?tab=repositories" class="btn-grad" data-aos="fade-left">
+            To GitHub
+          </a>
+        </div>
+      </article>
+    </div>
+
+    <div class="cards-row second"> 
+      <article class="card" data-aos="fade-up">
+        <img src="/Components/tic.png" alt="Tic-Tac-Toe" class="card-img">
+        <div class="card-body">
+          <h5 class="card-title" data-aos="fade-right">Tic-Tac-Toe Game</h5>
+          <p class="card-text">
+            Responsive HTML/CSS + JavaScript layout for the game.
+            My first React web-based game.
+          </p>
+          <a href="https://github.com/OMAAN-JALLANI?tab=repositories" class="btn-grad" data-aos="fade-left">
+            To GitHub
+          </a>
+        </div>
+      </article>
+ 
+      <article class="card" data-aos="fade-up">
+        <img src="/Components/sms.png" alt="Textutils" class="card-img">
+        <div class="card-body">
+          <h5 class="card-title" data-aos="fade-right">Textutils</h5>
+          <p class="card-text">
+            Responsive HTML/CSS + JavaScript layout for Textutils.
+            My first React-based website.
+          </p>
+          <a href="https://github.com/OMAAN-JALLANI?tab=repositories" class="btn-grad" data-aos="fade-left">
+            To GitHub
+          </a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  
