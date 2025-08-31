@@ -157,7 +157,7 @@ background: linear-gradient(25deg, #ff9800, #000000);
 .intro-section {
     background: #000000;
     text-align: center;
-    height: 550px;
+    margin-top: 150px;
 }
 
 .intro-section h1 {
@@ -165,6 +165,7 @@ background: linear-gradient(25deg, #ff9800, #000000);
     font-size: 50px;
     color: #ff9900cc;
     line-height: 50px;
+    display: inline-flex;
 }
 
 .intro-section h4 {
