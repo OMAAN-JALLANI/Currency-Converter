@@ -154,49 +154,46 @@
       .output{font-size:14px}
     }
   </style>
+ 
 
- <div class="main-box">
-  <div id="heading">
-    <h2>Currency Converter</h2>
-  </div>
-
-  <div class="inputer">
-    <span id="e-a">Enter Amount</span>
-    <input id="input" type="number" placeholder="Enter value" />
-  </div>
-
-  <div class="changer">
-    <div class="c1">
-      <span id="same">From</span>
-      <select class="languages-from" id="from">
-        <!-- JS se fill hoga -->
-      </select>
+ 
+  <div class="main-box">
+    <div id="heading">
+      <h2>Currency Converter</h2>
     </div>
 
-    <div class="icon" title="Swap">
-      <i class="fa-solid fa-arrow-right-arrow-left"></i>
+    <div class="inputer">
+      <span id="e-a">Enter Amount</span>
+      <input id="input" type="number" placeholder="Enter value" />
     </div>
 
-    <div class="c3">
-      <span id="same">To</span>
-      <select class="languages-to" id="to">
-        <!-- JS se fill hoga -->
-      </select>
+    <div class="changer">
+      <div class="c1">
+        <span id="same">From</span>
+        <select id="from"></select>
+      </div>
+
+      <div class="icon" title="Swap" id="swapBtn">
+        <i class="fa-solid fa-arrow-right-arrow-left"></i>
+      </div>
+
+      <div class="c3">
+        <span id="same">To</span>
+        <select id="to"></select>
+      </div>
+    </div>
+
+    <div class="output" id="rate">Enter Value to Convert</div>
+
+    <div class="last-btn">
+      <button class="btn" type="button" id="convertBtn">
+        Convert <i class="fa-solid fa-arrow-right-arrow-left" style="margin-left:6px"></i>
+      </button>
     </div>
   </div>
-
-  <div class="output" id="rate">Enter Value to Convert</div>
-
-  <div class="last-btn">
-    <button class="btn" type="button">
-      Convert <i class="fa-solid fa-arrow-right-arrow-left" style="margin-left:6px"></i>
-    </button>
-  </div>
-</div>
-
 
 <script>
-  const countryList = {
+   const countryList = {
     AED: "AE", AFN: "AF", XCD: "AG", ALL: "AL", AMD: "AM", ANG: "AN", AOA: "AO",
     AQD: "AQ", ARS: "AR", AUD: "AU", AZN: "AZ", BAM: "BA", BBD: "BB", BDT: "BD",
     XOF: "BE", BGN: "BG", BHD: "BH", BIF: "BI", BMD: "BM", BND: "BN", BOB: "BO",
@@ -222,57 +219,46 @@
     VUV: "VU", YER: "YE", ZAR: "ZA", ZMK: "ZM", ZWD: "ZW",
   };
 
-  // Populate both dropdowns
-  const fromSelect = document.getElementById("from");
-  const toSelect = document.getElementById("to");
-
-  for (let currency in countryList) {
-    let option1 = document.createElement("option");
-    option1.value = currency;
-    option1.textContent = `${currency} - ${countryList[currency]}`;
-    fromSelect.appendChild(option1);
-
-    let option2 = document.createElement("option");
-    option2.value = currency;
-    option2.textContent = `${currency} - ${countryList[currency]}`;
-    toSelect.appendChild(option2);
-  }
-
-  // Default selection (optional)
-  fromSelect.value = "USD";
-  toSelect.value = "PKR";
 
   const base_URL = "https://api.exchangerate-api.com/v4/latest";
 
-let output = document.querySelector(".output");
-let fromSelect = document.getElementById("from");
-let toSelect = document.getElementById("to");
-let amountInput = document.getElementById("input");
-let convertBtn = document.querySelector(".last-btn .btn");
+  let output = document.querySelector(".output");
+  let fromSelect = document.getElementById("from");
+  let toSelect = document.getElementById("to");
+  let amountInput = document.getElementById("input");
+  let convertBtn = document.getElementById("convertBtn");
+  let swapBtn = document.getElementById("swapBtn");
 
-// Populate dropdowns from countryList
-for (let currency in countryList) {
+  // Populate dropdowns
+  for (let currency in countryList) {
     let option1 = document.createElement("option");
     option1.value = currency;
-    option1.innerText = currency;
+    option1.innerText = `${currency} - ${countryList[currency]}`;
 
     let option2 = option1.cloneNode(true);
 
     fromSelect.appendChild(option1);
     toSelect.appendChild(option2);
-}
+  }
 
-// Default values
-fromSelect.value = "USD";
-toSelect.value = "PKR";
+  // Default values
+  fromSelect.value = "USD";
+  toSelect.value = "PKR";
 
-// Convert button click event
-convertBtn.addEventListener("click", async () => {
+  // Swap functionality
+  swapBtn.addEventListener("click", () => {
+    let temp = fromSelect.value;
+    fromSelect.value = toSelect.value;
+    toSelect.value = temp;
+  });
+
+  // Convert button click
+  convertBtn.addEventListener("click", async () => {
     let amtVal = amountInput.value;
 
     if (amtVal === "" || amtVal <= 0) {
-        amtVal = 1;
-        amountInput.value = 1;
+      amtVal = 1;
+      amountInput.value = 1;
     }
 
     let fromCurrency = fromSelect.value;
@@ -280,26 +266,25 @@ convertBtn.addEventListener("click", async () => {
 
     let URL = `${base_URL}/${fromCurrency}`;
     try {
-        let response = await fetch(URL);
-        let data = await response.json();
+      let response = await fetch(URL);
+      let data = await response.json();
 
-        if (!data.rates[toCurrency]) {
-            output.innerText = "Currency not available!";
-            output.style.color = "red";
-            return;
-        }
-
-        let rate = data.rates[toCurrency];
-        let convertedAmount = (amtVal * rate).toFixed(2);
-
-        output.innerText = `${amtVal} ${fromCurrency} = ${convertedAmount} ${toCurrency}`;
-        output.style.color = "green";
-    } catch (error) {
-        console.error(error);
-        output.innerText = "Error fetching data!";
+      if (!data.rates[toCurrency]) {
+        output.innerText = "Currency not available!";
         output.style.color = "red";
-    }
-});
+        return;
+      }
 
+      let rate = data.rates[toCurrency];
+      let convertedAmount = (amtVal * rate).toFixed(2);
+
+      output.innerText = `${amtVal} ${fromCurrency} = ${convertedAmount} ${toCurrency}`;
+      output.style.color = "green";
+    } catch (error) {
+      console.error(error);
+      output.innerText = "Error fetching data!";
+      output.style.color = "red";
+    }
+  });
 </script>
 
