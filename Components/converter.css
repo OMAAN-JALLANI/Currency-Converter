@@ -347,6 +347,10 @@ background: linear-gradient(25deg, #ff9800, #000000);
 }
 
 @media (max-width: 992px) {
+  
+  .navbar{
+    position: relative;
+  }
   .two-boxes {
     flex-direction: column;
     height: auto;
@@ -380,7 +384,7 @@ background: linear-gradient(25deg, #ff9800, #000000);
   }
 
   .intro-section {
-    margin-top: 200px;
+    margin-top: 70px;
     height: auto;
     padding: 40px 20px;
   }
