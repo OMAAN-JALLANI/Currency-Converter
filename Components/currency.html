@@ -194,32 +194,49 @@
 
 <script>
    const countryList = {
-    AED: "AE", AFN: "AF", XCD: "AG", ALL: "AL", AMD: "AM", ANG: "AN", AOA: "AO",
-    AQD: "AQ", ARS: "AR", AUD: "AU", AZN: "AZ", BAM: "BA", BBD: "BB", BDT: "BD",
-    XOF: "BE", BGN: "BG", BHD: "BH", BIF: "BI", BMD: "BM", BND: "BN", BOB: "BO",
-    BRL: "BR", BSD: "BS", NOK: "BV", BWP: "BW", BYR: "BY", BZD: "BZ", CAD: "CA",
-    CDF: "CD", XAF: "CF", CHF: "CH", CLP: "CL", CNY: "CN", COP: "CO", CRC: "CR",
-    CUP: "CU", CVE: "CV", CYP: "CY", CZK: "CZ", DJF: "DJ", DKK: "DK", DOP: "DO",
-    DZD: "DZ", ECS: "EC", EEK: "EE", EGP: "EG", ETB: "ET", EUR: "FR", FJD: "FJ",
-    FKP: "FK", GBP: "GB", GEL: "GE", GGP: "GG", GHS: "GH", GIP: "GI", GMD: "GM",
-    GNF: "GN", GTQ: "GT", GYD: "GY", HKD: "HK", HNL: "HN", HRK: "HR", HTG: "HT",
-    HUF: "HU", IDR: "ID", ILS: "IL", INR: "IN", IQD: "IQ", IRR: "IR", ISK: "IS",
-    JMD: "JM", JOD: "JO", JPY: "JP", KES: "KE", KGS: "KG", KHR: "KH", KMF: "KM",
-    KPW: "KP", KRW: "KR", KWD: "KW", KYD: "KY", KZT: "KZ", LAK: "LA", LBP: "LB",
-    LKR: "LK", LRD: "LR", LSL: "LS", LTL: "LT", LVL: "LV", LYD: "LY", MAD: "MA",
-    MDL: "MD", MGA: "MG", MKD: "MK", MMK: "MM", MNT: "MN", MOP: "MO", MRO: "MR",
-    MTL: "MT", MUR: "MU", MVR: "MV", MWK: "MW", MXN: "MX", MYR: "MY", MZN: "MZ",
-    NAD: "NA", XPF: "NC", NGN: "NG", NIO: "NI", NPR: "NP", NZD: "NZ", OMR: "OM",
-    PAB: "PA", PEN: "PE", PGK: "PG", PHP: "PH", PKR: "PK", PLN: "PL", PYG: "PY",
-    QAR: "QA", RON: "RO", RSD: "RS", RUB: "RU", RWF: "RW", SAR: "SA", SBD: "SB",
-    SCR: "SC", SDG: "SD", SEK: "SE", SGD: "SG", SKK: "SK", SLL: "SL", SOS: "SO",
-    SRD: "SR", STD: "ST", SVC: "SV", SYP: "SY", SZL: "SZ", THB: "TH", TJS: "TJ",
-    TMT: "TM", TND: "TN", TOP: "TO", TRY: "TR", TTD: "TT", TWD: "TW", TZS: "TZ",
-    UAH: "UA", UGX: "UG", USD: "US", UYU: "UY", UZS: "UZ", VEF: "VE", VND: "VN",
-    VUV: "VU", YER: "YE", ZAR: "ZA", ZMK: "ZM", ZWD: "ZW",
+    AED: "United Arab Emirates", AFN: "Afghanistan", XCD: "Antigua and Barbuda",
+    ALL: "Albania", AMD: "Armenia", ANG: "Netherlands Antilles", AOA: "Angola",
+    AQD: "Antarctica", ARS: "Argentina", AUD: "Australia", AZN: "Azerbaijan",
+    BAM: "Bosnia and Herzegovina", BBD: "Barbados", BDT: "Bangladesh",
+    XOF: "Benin", BGN: "Bulgaria", BHD: "Bahrain", BIF: "Burundi", BMD: "Bermuda",
+    BND: "Brunei", BOB: "Bolivia", BRL: "Brazil", BSD: "Bahamas", NOK: "Norway",
+    BWP: "Botswana", BYR: "Belarus", BZD: "Belize", CAD: "Canada",
+    CDF: "Democratic Republic of the Congo", XAF: "Central African Republic",
+    CHF: "Switzerland", CLP: "Chile", CNY: "China", COP: "Colombia",
+    CRC: "Costa Rica", CUP: "Cuba", CVE: "Cape Verde", CYP: "Cyprus",
+    CZK: "Czech Republic", DJF: "Djibouti", DKK: "Denmark",
+    DOP: "Dominican Republic", DZD: "Algeria", ECS: "Ecuador", EEK: "Estonia",
+    EGP: "Egypt", ETB: "Ethiopia", EUR: "European Union", FJD: "Fiji",
+    FKP: "Falkland Islands", GBP: "United Kingdom", GEL: "Georgia", GGP: "Guernsey",
+    GHS: "Ghana", GIP: "Gibraltar", GMD: "Gambia", GNF: "Guinea",
+    GTQ: "Guatemala", GYD: "Guyana", HKD: "Hong Kong", HNL: "Honduras",
+    HRK: "Croatia", HTG: "Haiti", HUF: "Hungary", IDR: "Indonesia",
+    ILS: "Israel", INR: "India", IQD: "Iraq", IRR: "Iran", ISK: "Iceland",
+    JMD: "Jamaica", JOD: "Jordan", JPY: "Japan", KES: "Kenya",
+    KGS: "Kyrgyzstan", KHR: "Cambodia", KMF: "Comoros", KPW: "North Korea",
+    KRW: "South Korea", KWD: "Kuwait", KYD: "Cayman Islands", KZT: "Kazakhstan",
+    LAK: "Laos", LBP: "Lebanon", LKR: "Sri Lanka", LRD: "Liberia",
+    LSL: "Lesotho", LTL: "Lithuania", LVL: "Latvia", LYD: "Libya",
+    MAD: "Morocco", MDL: "Moldova", MGA: "Madagascar", MKD: "North Macedonia",
+    MMK: "Myanmar", MNT: "Mongolia", MOP: "Macau", MRO: "Mauritania",
+    MTL: "Malta", MUR: "Mauritius", MVR: "Maldives", MWK: "Malawi",
+    MXN: "Mexico", MYR: "Malaysia", MZN: "Mozambique", NAD: "Namibia",
+    XPF: "New Caledonia", NGN: "Nigeria", NIO: "Nicaragua", NPR: "Nepal",
+    NZD: "New Zealand", OMR: "Oman", PAB: "Panama", PEN: "Peru",
+    PGK: "Papua New Guinea", PHP: "Philippines", PKR: "Pakistan",
+    PLN: "Poland", PYG: "Paraguay", QAR: "Qatar", RON: "Romania",
+    RSD: "Serbia", RUB: "Russia", RWF: "Rwanda", SAR: "Saudi Arabia",
+    SBD: "Solomon Islands", SCR: "Seychelles", SDG: "Sudan",
+    SEK: "Sweden", SGD: "Singapore", SKK: "Slovakia", SLL: "Sierra Leone",
+    SOS: "Somalia", SRD: "Suriname", STD: "São Tomé and Príncipe",
+    SVC: "El Salvador", SYP: "Syria", SZL: "Eswatini", THB: "Thailand",
+    TJS: "Tajikistan", TMT: "Turkmenistan", TND: "Tunisia", TOP: "Tonga",
+    TRY: "Turkey", TTD: "Trinidad and Tobago", TWD: "Taiwan",
+    TZS: "Tanzania", UAH: "Ukraine", UGX: "Uganda", USD: "United States",
+    UYU: "Uruguay", UZS: "Uzbekistan", VEF: "Venezuela", VND: "Vietnam",
+    VUV: "Vanuatu", YER: "Yemen", ZAR: "South Africa", ZMK: "Zambia",
+    ZWD: "Zimbabwe",
   };
-
-
   const base_URL = "https://api.exchangerate-api.com/v4/latest";
 
   let output = document.querySelector(".output");
@@ -233,7 +250,7 @@
   for (let currency in countryList) {
     let option1 = document.createElement("option");
     option1.value = currency;
-    option1.innerText = `${currency} - ${countryList[currency]}`;
+    option1.innerText = ` ${countryList[currency]}`;
 
     let option2 = option1.cloneNode(true);
 
